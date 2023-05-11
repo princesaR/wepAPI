@@ -5,7 +5,7 @@ use with Asp Net Web api core with EF code fisrt.
  
  
  to run the project in your computer
- change the "" to your sql server name
+ change the "server=yourNameSqlServer;database=chooseName;..." in the coronaDb class to your sql server name
 
  there are 4 class library projects: Bll, Dal, Entity, and Dto.
  
@@ -18,4 +18,5 @@ use with Asp Net Web api core with EF code fisrt.
  Bll :The business layer- with mapping from Entity to Dto and business logic
  
  and the main project: asp net web api-
+ 
  this project includes the controllers that perform get functions, post functions, etc.
