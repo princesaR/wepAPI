@@ -10,8 +10,11 @@ use with Asp Net Web api core with EF code fisrt.
  there are 4 class library projects: Bll, Dal, Entity, and Dto.
  
  Entity: the data layer.
+ 
  Dto: Flat objects with no relationships.
+ 
  Dal: Functions to perform operations on the dataBase
+ 
  Bll :The business layer- with mapping from Entity to Dto and business logic
  
  and the main project: asp net web api-
