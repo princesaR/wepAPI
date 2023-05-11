@@ -16,21 +16,21 @@ namespace Dal
             this.coronaDb = coronaDb;
         }
 
-        public async Task<List<CoronaPatient>> GetCoronaPatients()
+        public  List<CoronaPatient> GetCoronaPatients()
         {
-            return await Task.FromResult(coronaDb.CoronaPatients.ToList());
+            return (coronaDb.CoronaPatients.ToList());
         }
 
-        public async Task<CoronaPatient> GetCoronaPatientById(string id)
+        public CoronaPatient GetCoronaPatientById(string id)
         {
-            var coronaPatient = await Task.FromResult(coronaDb.CoronaPatients.FirstOrDefault(x => x.Id.Equals(id)));
+            var coronaPatient = coronaDb.CoronaPatients.FirstOrDefault(x => x.Id.Equals(id));
             return coronaPatient;
         }
 
-        public async Task<CoronaPatient> AddCoronaPatient(CoronaPatient coronaPatient)
+        public CoronaPatient AddCoronaPatient(CoronaPatient coronaPatient)
         {
             coronaDb.CoronaPatients.Add(coronaPatient);
-            await coronaDb.SaveChangesAsync();
+             coronaDb.SaveChanges();
             return coronaPatient;
         }
     }

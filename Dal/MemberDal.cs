@@ -17,20 +17,20 @@ namespace Dal
             this.coronaDb = coronaDb;
         }
 
-        public async Task<List<Member>> GetMembers()
+        public  List<Member> GetMembers()
         {
-            return await coronaDb.Members.ToListAsync();
+            return  coronaDb.Members.ToList();
         }
 
-        public async Task<Member> GetMemberById(string id)
+        public  Member GetMemberById(string id)
         {
-            return await coronaDb.Members.FirstOrDefaultAsync(x => x.Id.Equals(id));
+            return  coronaDb.Members.FirstOrDefault(x => x.Id.Equals(id));
         }
 
-        public async Task<Member> AddMember(Member member)
+        public  Member AddMember(Member member)
         {
             coronaDb.Members.Add(member);
-            await coronaDb.SaveChangesAsync();
+             coronaDb.SaveChanges();
             return member;
         }
     }

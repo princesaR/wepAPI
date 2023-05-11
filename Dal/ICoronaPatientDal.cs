@@ -9,8 +9,8 @@ namespace Dal
 {
     public interface ICoronaPatientDal
     {
-        Task<List<CoronaPatient>> GetCoronaPatients();
-        Task<CoronaPatient> GetCoronaPatientById(string id);
-        Task<CoronaPatient> AddCoronaPatient(CoronaPatient coronaPatient);
+        List<CoronaPatient> GetCoronaPatients();
+        CoronaPatient GetCoronaPatientById(string id);
+        CoronaPatient AddCoronaPatient(CoronaPatient coronaPatient);
     }
 }

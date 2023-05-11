@@ -9,8 +9,8 @@ namespace Dal
 {
     public interface IMemberDal
     {
-        Task<List<Member>> GetMembers();
-        Task<Member> GetMemberById(string id);
-        Task<Member> AddMember(Member member);
+        List<Member> GetMembers();
+        Member GetMemberById(string id);
+        Member AddMember(Member member);
     }
 }

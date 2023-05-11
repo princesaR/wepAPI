@@ -34,7 +34,7 @@ namespace Bll
         
 
         public CoronaPatientDto GetCoronaPatientById(string Id) {
-            CoronaPatient CoronaPatient = _CoronaPatientDal.GetCoronaPatirntById(Id);
+            CoronaPatient CoronaPatient = _CoronaPatientDal.GetCoronaPatientById(Id);
             if (CoronaPatient == null) { return null; }
             CoronaPatientDto coronaPatientDto = _mapper.Map<CoronaPatientDto>(CoronaPatient);
             return coronaPatientDto;

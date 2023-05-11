@@ -17,24 +17,24 @@ namespace Dal
             this.coronaDb = coronaDb;
         }
 
-        public async Task<List<Vaccination>> GetVaccinations()
+        public List<Vaccination> GetVaccinations()
         {
-            return await coronaDb.Vaccinations.ToListAsync();
+            return coronaDb.Vaccinations.ToList();
         }
 
-        public async Task<List<Vaccination>> GetVaccinationById(string id)
+        public List<Vaccination> GetVaccinationById(string id)
         {
-            List<Vaccination> vaccinations = await coronaDb.Vaccinations
+            List<Vaccination> vaccinations =  coronaDb.Vaccinations
                 .Where(x => x.Id.Equals(id))
-                .ToListAsync();
+                .ToList();
 
             return vaccinations;
         }
 
-        public async Task<Vaccination> AddVaccination(Vaccination vaccination)
+        public Vaccination AddVaccination(Vaccination vaccination)
         {
             coronaDb.Vaccinations.Add(vaccination);
-            await coronaDb.SaveChangesAsync();
+             coronaDb.SaveChanges();
             return vaccination;
         }
     }

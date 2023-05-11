@@ -9,8 +9,8 @@ namespace Dal
 {
     public interface IVaccinationDal
     {
-        Task<List<Vaccination>> GetVaccinations();
-        Task<List<Vaccination>> GetVaccinationById(string id);
-        Task<Vaccination> AddVaccination(Vaccination vaccination);
+        List<Vaccination> GetVaccinations();
+        List<Vaccination> GetVaccinationById(string id);
+        Vaccination AddVaccination(Vaccination vaccination);
     }
 }

@@ -2,7 +2,6 @@
 using Dto;
 using Bll;
 
-
 namespace wepAPI.Controllers
 {
 
@@ -11,54 +10,71 @@ namespace wepAPI.Controllers
     public class VaccinationController : ControllerBase
     {
 
-        IVaccinationBll _vaccinationBll;
-        IMemberBll _memberBll;
+        private readonly IVaccinationBll _vaccinationBll;
+        private readonly IMemberBll _memberBll;
 
-        public VaccinationController(IVaccinationBll _vaccinationBll,IMemberBll _memberBll)
+        public VaccinationController(IVaccinationBll vaccinationBll, IMemberBll memberBll)
         {
-            this._vaccinationBll = _vaccinationBll;
-            this._memberBll = _memberBll;
+            this._vaccinationBll = vaccinationBll;
+            this._memberBll = memberBll;
         }
-
 
         [HttpGet]
-        public  IActionResult GetVaccinations()
+        public IActionResult GetVaccinations()
         {
-            var vaccinations = _vaccinationBll.GetVaccinations();
-            return Ok(vaccinations);
+            try
+            {
+                var vaccinations = _vaccinationBll.GetVaccinations();
+                return Ok(vaccinations);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
+
         [HttpGet("{id}")]
         public IActionResult GetVaccinationById(string id)
         {
-            var member = _memberBll.GetMemberById(id);
-            if (member == null)
+            try
             {
-                return NotFound("Not found member with the specific ID");
-            }
+                var member = _memberBll.GetMemberById(id);
+                if (member == null)
+                {
+                    return NotFound("Not found member with the specific ID");
+                }
 
-            var vaccinationById = _vaccinationBll.GetVaccinationById(id);
-            if (vaccinationById == null)
+                var vaccinationById = _vaccinationBll.GetVaccinationById(id);
+                if (vaccinationById == null)
+                {
+                    return NotFound("The member with this specific ID does not have vaccinations");
+                }
+
+                return Ok(vaccinationById);
+            }
+            catch (Exception ex)
             {
-                return NotFound("the member with this specific Id doest have vaccinations");
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
-
-            return Ok(vaccinationById);
         }
-
 
         [HttpPost]
-        public  ActionResult<VaccinationDto> AddVaccination([FromBody] VaccinationDto vaccinationDto)
+        public ActionResult<VaccinationDto> AddVaccination([FromBody] VaccinationDto vaccinationDto)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var createdVaccination = _vaccinationBll.AddVaccination(vaccinationDto);
+                return CreatedAtAction(nameof(GetVaccinationById), new { id = createdVaccination.Id }, createdVaccination);
             }
-
-            var createdVaccination =  _vaccinationBll.AddVaccination(vaccinationDto);
-            return CreatedAtAction(nameof(GetVaccinationById), new { id = createdVaccination.Id }, createdVaccination);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
-
-
     }
 }
-

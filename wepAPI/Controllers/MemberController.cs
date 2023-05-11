@@ -4,7 +4,6 @@ using Bll;
 using Entity;
 using System;
 
-
 namespace wepAPI.Controllers
 {
 
@@ -12,8 +11,7 @@ namespace wepAPI.Controllers
     [Route("api/member/")]
     public class MemberController : ControllerBase
     {
-
-        IMemberBll _memberBll;
+        private readonly IMemberBll _memberBll;
 
         public MemberController(IMemberBll memberBll)
         {
@@ -23,40 +21,66 @@ namespace wepAPI.Controllers
         [HttpGet]
         public IActionResult GetAllMembers()
         {
-            var members = _memberBll.GetMembers();
-            return Ok(members);
+            try
+            {
+                var members = _memberBll.GetMembers();
+                return Ok(members);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMember(string id)
         {
-            var member = _memberBll.GetMemberById(id);
-            if (member == null)
+            try
             {
-                return NotFound("Not found member with the specific ID");
-            }
+                var member = _memberBll.GetMemberById(id);
+                if (member == null)
+                {
+                    return NotFound("Not found member with the specific ID");
+                }
 
-            return Ok(member);
+                return Ok(member);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         [HttpPost]
         public ActionResult<MemberDto> AddMember([FromBody] MemberDto memberDto)
         {
-           if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-           }
-            var createdMember = _memberBll.AddMember(memberDto);
-            return CreatedAtAction(nameof(GetAllMembers), new { id = createdMember.Id }, createdMember);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var createdMember = _memberBll.AddMember(memberDto);
+                return CreatedAtAction(nameof(GetAllMembers), new { id = createdMember.Id }, createdMember);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
 
         [HttpGet("getNotVaccinated")]
-        public int GetNotVaccinatedMembersCount() {
-            return _memberBll.GetNotVaccinatedCount();
+        public IActionResult GetNotVaccinatedMembersCount()
+        {
+            try
+            {
+                var count = _memberBll.GetNotVaccinatedCount();
+                return Ok(count);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
-
-        
-
-
     }
 }
