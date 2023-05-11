@@ -1,0 +1,17 @@
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\Dto.deps.json
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\Dto.dll
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\Dto.pdb
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.csproj.AssemblyReference.cache
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.AssemblyInfoInputs.cache
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.AssemblyInfo.cs
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.csproj.CoreCompileInputs.cache
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.dll
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\refint\Dto.dll
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.pdb
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\ref\Dto.dll
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\Entity.dll
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\Entity.pdb
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\obj\Debug\net6.0\Dto.csproj.CopyComplete
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\ValidationAttributes.dll
+C:\Users\רעות\Desktop\Corona\c#\wepAPI\Dto\bin\Debug\net6.0\ValidationAttributes.pdb
